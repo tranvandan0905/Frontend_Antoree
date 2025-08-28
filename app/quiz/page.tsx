@@ -42,6 +42,7 @@ export default function QuizPage() {
         setResult(null);
         setShowModal(false);
     };
+    
 
     const handleAnswer = (qId, value) => {
         setAnswers((prev) => ({
