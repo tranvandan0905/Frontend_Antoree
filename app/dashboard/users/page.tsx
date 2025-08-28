@@ -1,19 +1,24 @@
 "use client";
 import { useEffect, useState } from "react";
-import { getLead } from "../../services/leadService";
-import { getrequestDetail } from "../../services/RequestDetailService";
+import { getLead, putLead } from "../../services/leadService";
+import { getrequestDetail, putRequestDetail } from "../../services/RequestDetailService";
 import Container from "react-bootstrap/Container";
 import Table from "react-bootstrap/Table";
 import Badge from "react-bootstrap/Badge";
 import Spinner from "react-bootstrap/Spinner";
 import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
+import AlertToast from "@/app/components/AlertToast";
 
 export default function UsersPage() {
     const [users, setUsers] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
     const [filter, setFilter] = useState<string>("all");
-    const [mode, setMode] = useState<"lead" | "free">("lead"); 
+    const [mode, setMode] = useState<"lead" | "free">("lead");
+    const [alert, setAlert] = useState({
+        message: null,
+        variant: "danger",
+    });
     useEffect(() => {
         fetchLead();
     }, []);
@@ -27,6 +32,41 @@ export default function UsersPage() {
             setFilter("all");
         } catch (err) {
             console.error("Error loading lead:", err);
+        } finally {
+            setLoading(false);
+        }
+    };
+    const updateUser = async (id: string) => {
+        setLoading(true);
+        try {
+            const isSent = true;
+
+            if (mode === "lead") {
+                const data = await putLead(id, isSent);
+                console.log(data);
+
+                setAlert({
+                    message: data.message,
+                    variant: "success",
+                });
+
+                await fetchLead();
+            } else {
+                const data = await putRequestDetail(id, isSent);
+                console.log(data);
+                setAlert({
+                    message: data.message,
+                    variant: "success",
+                });
+
+                await fetchRequestDetail();
+            }
+        } catch (err) {
+            console.error("Error updating user:", err);
+            setAlert({
+                message: "Cập nhật thất bại",
+                variant: "danger",
+            });
         } finally {
             setLoading(false);
         }
@@ -64,9 +104,9 @@ export default function UsersPage() {
 
     return (
         <Container className="mt-4">
-            {/* Thanh nút chọn chế độ và bộ lọc */}
+            <AlertToast alert={alert} setAlert={setAlert} />
             <div className="d-flex justify-content-between mb-3">
-                {/* Nhóm nút bên trái */}
+
                 <div className="d-flex gap-2">
                     <Button
                         variant={mode === "free" ? "warning" : "outline-warning"}
@@ -82,7 +122,7 @@ export default function UsersPage() {
                     </Button>
                 </div>
 
-          
+
                 <div>
                     <ButtonGroup>
                         <Button
@@ -102,7 +142,7 @@ export default function UsersPage() {
             </div>
 
 
-   
+
             <Table striped bordered hover responsive className="text-center shadow-sm">
                 <thead className="table-dark">
                     <tr>
@@ -117,7 +157,7 @@ export default function UsersPage() {
                         filteredUsers.map((u) => (
                             <tr key={u._id}>
                                 <td>{u.email}</td>
-                              
+
                                 <td>{u.score ?? 0}</td>
                                 <td>
                                     {u.isSent ? (
@@ -127,6 +167,17 @@ export default function UsersPage() {
                                     )}
                                 </td>
                                 <td>{new Date(u.createdAt).toLocaleString("vi-VN")}</td>
+                                <td>
+                                    {!u.isSent && (
+                                        <Button
+                                            variant="outline-secondary"
+                                            onClick={() => updateUser(u._id)}
+                                        >
+                                            Xác nhận đã gửi
+                                        </Button>
+                                    )}
+                                </td>
+
                             </tr>
                         ))
                     ) : (

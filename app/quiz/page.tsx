@@ -100,7 +100,7 @@ export default function QuizPage() {
     return (
         <Container className="py-4">
             <AlertToast alert={alert} setAlert={setAlert} />
-            {/* Nút quay lại */}
+           
             <div className="mb-3">
                 <Link href="/" passHref>
                     <Button variant="outline-secondary" size="sm">
