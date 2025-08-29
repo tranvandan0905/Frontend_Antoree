@@ -66,8 +66,7 @@ export default function HelpPage() {
 
   return (
     <main>
-      {/* HERO */}
-      <section className="py-5 text-center bg-primary text-white">
+      <section className="py-5 text-center text-white" style={{ background: "linear-gradient(135deg, #353739ff, #615771ff)" }}>
         <Container>
           <h1 className="mb-2">Chúng Tôi Có Thể Giúp Gì Cho Bạn?</h1>
           <p className="mb-4">Tìm kiếm câu trả lời hoặc duyệt qua các chủ đề phổ biến bên dưới.</p>
@@ -81,9 +80,7 @@ export default function HelpPage() {
           />
         </Container>
       </section>
-
-      {/* FAQ CONTENT */}
-      <section className="py-5 bg-light">
+      <section className="py-5 ">
         <Container>
           {filteredFaq.length > 0 ? (
             filteredFaq.map((section, idx) => (
@@ -108,8 +105,8 @@ export default function HelpPage() {
       {/* CONTACT SUPPORT */}
       <section className="py-5 bg-gradient-to-r from-primary to-secondary text-white">
         <Container>
-          <h2 className="mb-4 text-center">Bạn Vẫn Cần Trợ Giúp?</h2>
-          <p className="mb-5 text-center">Đừng ngần ngại liên hệ với đội ngũ hỗ trợ thân thiện của chúng tôi.</p>
+          <h2 className=" text-center text-black">Bạn Vẫn Cần Trợ Giúp?</h2>
+          <p className=" text-center text-black">Đừng ngần ngại liên hệ với đội ngũ hỗ trợ thân thiện của chúng tôi.</p>
           <Row className="g-4">
             {[
               { icon: "📧", title: "Email Hỗ Trợ", desc: "Chúng tôi sẽ phản hồi trong vòng 24 giờ làm việc.", link: "mailto:support@quizup.com", linkText: "support@quizup.com" },

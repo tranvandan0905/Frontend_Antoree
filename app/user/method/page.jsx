@@ -29,7 +29,7 @@ export default function MethodPage() {
   return (
     <main>
       {/* HERO */}
-      <section className="method-hero py-5 text-center bg-primary text-white">
+      <section className="method-hero py-5 text-center  text-white" style={{ background: "linear-gradient(135deg, #353739ff, #615771ff)" }}>
         <Container>
           <h1 className="mb-3">Học Thông Minh Hơn, Không Phải Chăm Chỉ Hơn</h1>
           <p className="lead mb-4">
@@ -110,15 +110,6 @@ export default function MethodPage() {
               )}
             </Row>
           ))}
-        </Container>
-      </section>
-
-      {/* CTA */}
-      <section id="cta-section" className="py-5 text-center bg-warning text-dark">
-        <Container>
-          <h2 className="mb-3">Trải Nghiệm Sức Mạnh Của Việc Học Thông Minh?</h2>
-          <p className="mb-4">Hãy để phương pháp 3T giúp bạn vạch ra con đường ngắn nhất đến mục tiêu của mình.</p>
-          <Button href="#" variant="dark" size="lg">Bắt đầu với bài Test Chẩn Đoán (Miễn Phí)</Button>
         </Container>
       </section>
     </main>

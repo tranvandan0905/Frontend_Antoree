@@ -8,7 +8,7 @@ const storiesData = [
     name: "Ngọc Anh",
     category: "toeic",
     tag: "TOEIC 850+",
-    image: "https://source.unsplash.com/random/400x250/?student,happy,female",
+    image:"/images/z407811279454704d3b10be2c47b86e5bd170832bde562-16753562253021567389777.webp", 
     quote: 'Nhờ lộ trình cá nhân hóa, mình đã tập trung đúng vào điểm yếu và bứt phá ngoạn mục!',
     before: "550",
     after: "875",
@@ -30,7 +30,7 @@ const storiesData = [
     name: "Minh Quân",
     category: "ielts",
     tag: "IELTS 7.0+",
-    image: "https://source.unsplash.com/random/400x250/?student,happy,male",
+    image:"/images/lovepik-man-png-image_400498686_wh1200.png",
     quote: "Mình chưa bao giờ nghĩ có thể đạt 7.0 IELTS Speaking...",
     before: "5.5",
     after: "7.0",
@@ -48,7 +48,7 @@ const storiesData = [
     name: "Hoài Thu",
     category: "beginner",
     tag: "Vượt Rào Mất Gốc",
-    image: "https://source.unsplash.com/random/400x250/?student,focused",
+    image: "/images/anh-nguoi-mau-25.jpg",
     quote: "Từ mất gốc tiếng Anh, giờ mình đã tự tin giao tiếp và đạt 650 TOEIC...",
     before: "~300",
     after: "650",
@@ -74,15 +74,12 @@ export default function SuccessStoriesPage() {
 
   return (
     <main>
-      {/* HERO */}
-      <section className="py-5 text-center bg-light">
+      <section className="py-5 text-white text-center" style={{ background: "linear-gradient(135deg, #353739ff, #615771ff)" }}>
         <Container>
           <h1>Hành Trình Tỏa Sáng Của Học Viên QuizUp</h1>
           <p>Đây là những câu chuyện về sự nỗ lực, quyết tâm và thành quả xứng đáng.</p>
         </Container>
       </section>
-
-      {/* FILTER & GALLERY */}
       <section className="py-5">
         <Container>
           <h2 className="mb-4 text-center">Khám Phá Các Câu Chuyện Thành Công</h2>
@@ -111,7 +108,7 @@ export default function SuccessStoriesPage() {
               <Col md={4} key={story.id}>
                 <Card className="h-100 shadow-sm">
                   <div className="position-relative">
-                    <Card.Img variant="top" src={story.image} />
+                    <Card.Img variant="top" src={story.image}   style={{ width: "415px", height: "400px" }} />
                     <Badge
                       bg="secondary"
                       className="position-absolute"
@@ -144,17 +141,6 @@ export default function SuccessStoriesPage() {
           </Row>
         </Container>
       </section>
-
-      {/* CTA */}
-      <section className="py-5 text-center bg-primary text-white">
-        <Container>
-          <h2>Bạn Sẽ Là Câu Chuyện Thành Công Tiếp Theo?</h2>
-          <p>Hàng ngàn người đã làm được, và bạn cũng vậy. Bắt đầu ngay hôm nay.</p>
-          <Button variant="light" size="lg">Bắt Đầu Hành Trình Của Bạn (Miễn Phí)</Button>
-        </Container>
-      </section>
-
-      {/* MODAL */}
       <Modal
         show={modalStory !== null}
         onHide={() => setModalStory(null)}

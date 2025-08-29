@@ -33,7 +33,7 @@ export default function ContactPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
-      // Gửi dữ liệu lên server ở đây (demo thì chỉ hiện message)
+     
       setStatusMessage("Gửi tin nhắn thành công! Chúng tôi sẽ sớm liên hệ với bạn.");
       setFormData({ name: "", email: "", subject: "", message: "" });
       setErrors({});
@@ -44,19 +44,16 @@ export default function ContactPage() {
 
   return (
     <main>
-      {/* Page Header */}
-      <section className="py-5 text-center bg-dark text-white">
+
+      <section className="py-5 text-center  text-white" style={{ background: "linear-gradient(135deg, #353739ff, #615771ff)" }}>
         <Container>
           <h1 className="mb-3">Liên Hệ Với Chúng Tôi</h1>
           <p>Chúng tôi luôn sẵn sàng lắng nghe! Vui lòng chọn phương thức liên hệ phù hợp hoặc gửi tin nhắn cho chúng tôi.</p>
         </Container>
       </section>
-
-      {/* Contact Section */}
       <section className="py-5">
         <Container>
           <Row className="g-5">
-            {/* Contact Info */}
             <Col md={5}>
               <Card className="p-4 shadow-sm border-0">
                 <h3 className="mb-4">Thông Tin Trực Tiếp</h3>
@@ -106,11 +103,9 @@ export default function ContactPage() {
                 </div>
               </Card>
             </Col>
-
-            {/* Contact Form */}
             <Col md={7}>
               <Card className="p-4 shadow-sm border-0">
-                <h3 className="mb-4">Gửi Tin Nhắn Cho Chúng Tôi</h3>
+                <h3 className="mb-4 text-center">Gửi Tin Nhắn Cho Chúng Tôi</h3>
                 <Form onSubmit={handleSubmit}>
                   <Form.Group className="mb-3" controlId="name">
                     <Form.Label>Họ và Tên</Form.Label>
@@ -178,8 +173,6 @@ export default function ContactPage() {
           </Row>
         </Container>
       </section>
-
-      {/* Map Section */}
       <section className="py-5">
         <Container>
           <iframe

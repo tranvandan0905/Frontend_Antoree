@@ -9,7 +9,7 @@ const blogPosts = [
     date: "28/08/2025",
     excerpt:
       "Part 5 TOEIC không khó, nhưng lại đầy rẫy những cái bẫy ngữ pháp tinh vi. Hãy cùng khám phá 5 lỗi sai phổ biến nhất mà ngay cả những bạn khá tiếng Anh cũng thường mắc phải...",
-    img: "https://source.unsplash.com/random/800x500/?grammar,book",
+    img: "/images/colorful-creative-mind-map-brainstorm_xlarge.png",
     link: "single-post.html",
   },
   {
@@ -19,7 +19,7 @@ const blogPosts = [
     date: "25/08/2025",
     excerpt:
       "Chủ đề văn phòng (Office) chiếm một tỷ trọng lớn trong các bài thi TOEIC. Nắm vững bộ 50 cụm từ này sẽ giúp bạn tăng ít nhất 50 điểm cho phần đọc hiểu...",
-    img: "https://source.unsplash.com/random/800x500/?vocabulary,flashcard",
+    img: "/images/images.png",
     link: "single-post.html",
   },
   {
@@ -29,7 +29,7 @@ const blogPosts = [
     date: "22/08/2025",
     excerpt:
       '"Em không kịp giờ làm Part 7" là câu nói quen thuộc của rất nhiều sĩ tử. Bài viết này sẽ cung cấp cho bạn một chiến thuật phân bổ thời gian chi tiết và hiệu quả...',
-    img: "https://source.unsplash.com/random/800x500/?strategy,tips",
+    img: "/images/Ảnh chụp màn hình 2025-08-29 170141.png",
     link: "single-post.html",
   },
 ];
@@ -37,11 +37,7 @@ const blogPosts = [
 export default function BlogPage() {
   return (
     <main>
-      {/* Header */}
-      
-
-      {/* Hero */}
-      <section className="py-5 text-center bg-dark text-white">
+      <section className="py-5 text-center text-white" style={{ background: "linear-gradient(135deg, #353739ff, #615771ff)" }}>
         <Container>
           <h1>Blog &amp; Tài Liệu</h1>
           <p>Khám phá kho tàng kiến thức, mẹo thi và kinh nghiệm học tập từ các chuyên gia hàng đầu.</p>
@@ -90,7 +86,7 @@ export default function BlogPage() {
               <Form.Control type="search" placeholder="Nhập từ khóa..." className="mt-2" />
             </Card>
 
-            <Card className="mb-4 p-3 text-center bg-primary text-white">
+            <Card className="mb-4 p-3 text-center text-white" style={{ background: "linear-gradient(135deg, #353739ff, #615771ff)" }}>
               <h5>Biết Trình Độ, Rõ Lộ Trình</h5>
               <p>Làm bài test nhanh 15 phút để khám phá điểm mạnh, yếu của bạn!</p>
               <Button href="#" variant="light">Test Miễn Phí Ngay</Button>
