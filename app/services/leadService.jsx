@@ -4,7 +4,7 @@ export async function getLead() {
 }
 export async function putLead(id, isSent) {
   try {
-    console.log(id, isSent)
+ 
     const res = await fetch(`http://localhost:5000/api/lead/${id}`, {
       method: "PUT",
       headers: {

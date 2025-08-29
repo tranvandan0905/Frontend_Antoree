@@ -14,7 +14,6 @@ export async function getrequestDetail() {
 }
 export async function putRequestDetail(id, isSent) {
   try {
-    console.log(id, isSent)
     const res = await fetch(`http://localhost:5000/api/requestDetail/${id}`, {
       method: "PUT",
       headers: {

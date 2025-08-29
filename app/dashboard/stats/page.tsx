@@ -101,7 +101,7 @@ export default function StatsPage() {
         </Col>
         <Col md={3}>
           <Card className="p-3 text-center shadow-sm border-0 rounded-4 bg-light">
-            <h6 className="text-muted">Người dùng Full</h6>
+            <h6 className="text-muted">Người dùng đã mua</h6>
             <h3 className="fw-bold text-danger">{stats.totalFull}</h3>
           </Card>
         </Col>
