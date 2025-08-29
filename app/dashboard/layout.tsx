@@ -6,8 +6,18 @@ import Col from "react-bootstrap/Col";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import ListGroup from "react-bootstrap/ListGroup";
+import { useRouter } from "next/navigation";
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+  const router = useRouter();
+
+  const handleLogout = () => {
+   
+    localStorage.removeItem("token"); 
+    
+    router.push("/");
+  };
+
   return (
     <Container fluid className="vh-100">
       <Row className="h-100">
@@ -29,18 +39,16 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
         {/* Main Content */}
         <Col xs={9} md={10} className="bg-light p-4">
-          {/* Navbar top */}
+     
           <Navbar bg="light" expand="lg" className="mb-4 border-bottom">
             <Container fluid>
               <Navbar.Brand>Admin Dashboard</Navbar.Brand>
               <Nav className="ms-auto">
-               
-                <Nav.Link href="#">Logout</Nav.Link>
+                <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
               </Nav>
             </Container>
           </Navbar>
 
-          {/* Render nội dung page */}
           <div>{children}</div>
         </Col>
       </Row>

@@ -4,9 +4,9 @@ import {
   Container, Card, Form, Button, Row, Col, Modal,
 } from "react-bootstrap";
 import Link from "next/link";
-import { getQuizQuestions, CheckQuizAnswers } from "../services/quizService";
-import { PostrequestDetail } from "../services/RequestDetailService";
-import AlertToast from "../components/AlertToast";
+import { getQuizQuestions, CheckQuizAnswers } from "../../services/quizService";
+import { PostrequestDetail } from "../../services/RequestDetailService";
+import AlertToast from "../../components/AlertToast";
 
 export default function QuizPage() {
   const [questions, setQuestions] = useState([]);

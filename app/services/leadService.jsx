@@ -1,14 +1,22 @@
 export async function getLead() {
-  const res = await fetch("http://localhost:5000/api/lead");
+  const token = localStorage.getItem("token");
+  const res = await fetch("http://localhost:5000/api/lead", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
+    }
+  });
   return res.json();
 }
 export async function putLead(id, isSent) {
   try {
- 
+    const token = localStorage.getItem("token");
     const res = await fetch(`http://localhost:5000/api/lead/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
       },
       body: JSON.stringify({ isSent }),
     });
@@ -25,6 +33,13 @@ export async function putLead(id, isSent) {
   }
 }
 export async function stats() {
-  const res = await fetch("http://localhost:5000/api/stats");
+  const token = localStorage.getItem("token");
+  const res = await fetch("http://localhost:5000/api/stats", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
+    }
+  });
   return res.json();
 }

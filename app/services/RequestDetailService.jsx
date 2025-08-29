@@ -4,20 +4,29 @@ export async function PostrequestDetail(email) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ email }), 
+    body: JSON.stringify({ email }),
   });
   return res.json();
 }
 export async function getrequestDetail() {
-  const res = await fetch("http://localhost:5000/api/requestDetail");
+  const token = localStorage.getItem("token");
+  const res = await fetch("http://localhost:5000/api/requestDetail", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
+    }
+  });
   return res.json();
 }
 export async function putRequestDetail(id, isSent) {
   try {
+    const token = localStorage.getItem("token");
     const res = await fetch(`http://localhost:5000/api/requestDetail/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
       },
       body: JSON.stringify({ isSent }),
     });
