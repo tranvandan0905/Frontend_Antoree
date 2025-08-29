@@ -150,6 +150,7 @@ export default function UsersPage() {
                         <th>Giá tiền</th>
                         <th>Trạng thái</th>
                         <th>Thời gian thực hiện</th>
+                         <th>Cập nhật</th>
                     </tr>
                 </thead>
                 <tbody>

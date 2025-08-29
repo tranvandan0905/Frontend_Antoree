@@ -24,3 +24,7 @@ export async function putLead(id, isSent) {
     throw error;
   }
 }
+export async function stats() {
+  const res = await fetch("http://localhost:5000/api/stats");
+  return res.json();
+}

@@ -21,9 +21,6 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <ListGroup.Item action href="/dashboard/users" className="bg-dark text-white border-0">
               Users
             </ListGroup.Item>
-            <ListGroup.Item action href="/dashboard/orders" className="bg-dark text-white border-0">
-              Orders
-            </ListGroup.Item>
             <ListGroup.Item action href="/dashboard/stats" className="bg-dark text-white border-0">
               Stats
             </ListGroup.Item>
