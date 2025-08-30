@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import {
   Container, Card, Form, Button, Row, Col, Modal,
 } from "react-bootstrap";
-import Link from "next/link";
 import { getQuizQuestions, CheckQuizAnswers } from "../../services/quizService";
 import { PostrequestDetail } from "../../services/RequestDetailService";
 import AlertToast from "../../components/AlertToast";
@@ -99,11 +98,6 @@ export default function QuizPage() {
       <AlertToast alert={alert} setAlert={setAlert} />
 
       <div className="mb-3 d-flex justify-content-between">
-        <Link href="/" passHref>
-          <Button variant="outline-secondary" size="sm">⬅ Quay lại</Button>
-        </Link>
-
-        {/* nút chọn loại bài test */}
         <div className="d-flex gap-2">
           <Button
             variant={quizType === "toeic" ? "primary" : "outline-primary"}
@@ -138,7 +132,7 @@ export default function QuizPage() {
                       <Form.Check
                         key={i}
                         type="radio"
-                        name={`q${q._id}`} // dùng _id để group chính xác
+                        name={`q${q._id}`}
                         label={opt}
                         value={opt}
                         checked={answers[q._id] === opt}

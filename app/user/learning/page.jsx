@@ -1,58 +1,8 @@
 "use client";
 import { useState } from "react";
-import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
-
-const learningPaths = [
-  {
-    goal: "beginner",
-    tag: "Mất Gốc",
-    tagColor: "#00875a",
-    title: "Lộ trình Xây Lại Nền Tảng Tiếng Anh",
-    description: "Dành cho những bạn mất gốc hoàn toàn, bắt đầu từ những viên gạch cơ bản nhất như phát âm, ngữ pháp và từ vựng nền tảng.",
-    duration: "4 tháng",
-    lectures: 80,
-    price: "999.000đ",
-    img: "https://source.unsplash.com/random/400x250/?abc,alphabet",
-    link: "course-detail.html",
-  },
-  {
-    goal: "toeic",
-    tag: "Mục Tiêu TOEIC 550+",
-    tagColor: "#0d6efd",
-    title: "Lộ trình TOEIC đảm bảo đầu ra 550+",
-    description: "Cung cấp kiến thức và kỹ năng cần thiết để bạn đạt được số điểm TOEIC tối thiểu cho việc tốt nghiệp hoặc yêu cầu công việc cơ bản.",
-    duration: "3 tháng",
-    lectures: 100,
-    price: "1.299.000đ",
-    img: "https://source.unsplash.com/random/400x250/?business,office",
-    link: "course-detail.html",
-  },
-  {
-    goal: "toeic",
-    tag: "Mục Tiêu TOEIC 750+",
-    tagColor: "#0d6efd",
-    title: "Lộ trình Chinh phục TOEIC 750+",
-    description: "Tập trung vào các chiến thuật làm bài nâng cao, từ vựng chuyên sâu và luyện đề chuyên sâu để bứt phá điểm số.",
-    duration: "3 tháng",
-    lectures: 120,
-    price: "1.499.000đ",
-    img: "https://source.unsplash.com/random/400x250/?presentation,meeting",
-    link: "course-detail.html",
-  },
-  {
-    goal: "ielts",
-    tag: "Mục Tiêu IELTS 7.0+",
-    tagColor: "#BF2600",
-    title: "Lộ trình Bứt phá IELTS 7.0+ toàn diện 4 kỹ năng",
-    description: "Chương trình học chuyên sâu, tập trung vào việc phát triển tư duy, từ vựng học thuật và kỹ năng làm bài cho cả 4 kỹ năng.",
-    duration: "6 tháng",
-    lectures: 150,
-    price: "2.999.000đ",
-    img: "https://source.unsplash.com/random/400x250/?travel,london",
-    link: "course-detail.html",
-  },
-];
-
+import Link from "next/link";
+import { momolead } from "../../services/bankingService";
+import { Container, Row, Col, Card, Button, Form, Image, Modal } from "react-bootstrap";
 const whyUs = [
   { icon: "🎯", title: "Lộ Trình Cá Nhân Hóa", desc: "Học đúng trọng tâm, tập trung vào điểm yếu của bạn dựa trên kết quả test đầu vào." },
   { icon: "👩‍🏫", title: "Giảng Viên Chuyên Môn Cao", desc: "Đội ngũ giáo viên 990 TOEIC, 8.5+ IELTS với nhiều năm kinh nghiệm thực chiến." },
@@ -61,56 +11,134 @@ const whyUs = [
 ];
 
 export default function LearningPathsPage() {
-  const [selectedGoal, setSelectedGoal] = useState("all");
+  const [showModal, setShowModal] = useState(false);
+  const [email, setEmail] = useState("");
 
+  const handleLead = async () => {
+    if (!email.trim()) {
+      alert("Vui lòng nhập email trước khi thanh toán!");
+      return;
+    }
+
+    const confirmEmail = confirm(
+      "Bạn chắc chắn email đã đúng chưa ?\nNếu sai email chúng tôi không chịu trách nhiệm!"
+    );
+
+    if (!confirmEmail) return;
+
+    try {
+      const result = await momolead(email);
+      console.log(result);
+      if (result?.payUrl) {
+        window.location.href = result.payUrl;
+      }
+    } catch (error) {
+      console.log(error);
+      alert("Có lỗi xảy ra khi xử lý thanh toán!");
+    }
+  };
   return (
     <main>
       <section className="text-center py-5 text-white" style={{ background: "linear-gradient(135deg, #353739ff, #615771ff)" }}>
         <Container>
           <h1>Tìm Lộ Trình Học Hoàn Hảo Dành Cho Bạn</h1>
           <p>Mỗi lộ trình được thiết kế bài bản, cá nhân hóa để giúp bạn đạt mục tiêu nhanh nhất, dù bạn là người mới bắt đầu hay muốn nâng cao điểm số.</p>
-          <Form.Select
-            style={{ maxWidth: 300, margin: "1rem auto" }}
-            value={selectedGoal}
-            onChange={(e) => setSelectedGoal(e.target.value)}
-          >
-            <option value="all">Tất cả mục tiêu</option>
-            <option value="toeic">TOEIC</option>
-            <option value="ielts">IELTS</option>
-            <option value="beginner">Mất gốc</option>
-          </Form.Select>
+
         </Container>
       </section>
 
-      {/* Paths Grid */}
-      <Container className="my-5">
-        <Row className="g-4">
-          {learningPaths
-            .filter((path) => selectedGoal === "all" || path.goal === selectedGoal)
-            .map((path, idx) => (
-              <Col md={6} lg={4} key={idx}>
-                <Card className="h-100 shadow-sm">
-                  <Card.Img variant="top" src={path.img} />
-                  <Card.Body>
-                    <span
-                      className="badge mb-2"
-                      style={{ backgroundColor: path.tagColor, color: "white" }}
-                    >
-                      {path.tag}
-                    </span>
-                    <Card.Title>{path.title}</Card.Title>
-                    <Card.Text>{path.description}</Card.Text>
-                    <div className="mb-2">
-                      <span className="me-3">🕒 <strong>Thời lượng:</strong> {path.duration}</span>
-                      <span>📚 <strong>Bài giảng:</strong> {path.lectures} video</span>
-                    </div>
-                    <div className="mb-3"><strong>{path.price}</strong></div>
-                    <Button href={path.link} variant="primary">Xem Chi Tiết Lộ Trình</Button>
-                  </Card.Body>
-                </Card>
-              </Col>
-            ))}
+      <Container className="text-center py-5">
+        <Row className="align-items-center">
+          <Col md={6}>
+            <Image
+              src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+              alt="TOEIC Test"
+              fluid
+              rounded
+            />
+          </Col>
+          <Col md={6} className="mt-4 mt-md-0">
+            <h1 className="fw-bold">Mini Quiz TOEIC/IELTS</h1>
+            <p className="lead mt-3">
+              Thử sức với <strong>10 câu hỏi TOEIC trong 3 phút</strong>.
+              Nhận ngay đáp án chi tiết và tài liệu TOEIC PDF miễn phí qua email.
+            </p>
+            <div className="d-flex gap-3 justify-content-center mt-4">
+              <Link href="/quiz" passHref>
+                <Button variant="primary" size="lg" className="px-4 py-2">
+                  🚀 Bắt đầu test ngay
+                </Button>
+              </Link>
+
+              <Button
+                variant="success"
+                size="lg"
+                className="px-4 py-2 fw-bold shadow-lg"
+                onClick={() => setShowModal(true)}
+              >
+                🌟 1000 Câu TOEIC Full
+              </Button>
+            </div>
+          </Col>
         </Row>
+
+        {/* Modal Thanh toán */}
+        <Modal show={showModal} onHide={() => setShowModal(false)} centered>
+          <Modal.Header closeButton>
+            <Modal.Title>Nội dung tài liệu!</Modal.Title>
+          </Modal.Header>
+          <Modal.Body className="text-center">
+            <>
+              <Card className="shadow-lg border-0 rounded-3 p-3 my-3">
+                <Card.Body>
+                  <Card.Title className="text-primary fw-bold fs-4">
+                    📘 Bộ tài liệu 1000 câu hỏi TOEIC
+                  </Card.Title>
+                  <Card.Text className="fs-6" style={{ lineHeight: "1.7" }}>
+                    Bộ tài liệu được biên soạn bám sát cấu trúc đề thi thật, bao gồm đầy đủ
+                    các Part từ 1 đến 7:
+                    <br /> <br />
+                    🎧 <b className="text-success">Listening:</b> nhiều ngữ cảnh giao tiếp thực tế <br />
+                    📖 <b className="text-success">Reading:</b> câu hỏi đa dạng, sát với đề thi thật <br />
+                    ✅ <b className="text-success">Đáp án & Giải thích chi tiết</b> cho từng câu hỏi <br />
+                    🎯 Phù hợp cho cả{" "}
+                    <b className="text-success">người mới bắt đầu</b> lẫn{" "}
+                    <b className="text-success">người muốn nâng cao điểm số</b> <br />
+                    <br />
+                    📈 Tài liệu giúp bạn luyện kỹ năng, tăng tốc độ làm bài và làm quen với
+                    áp lực thời gian trong kỳ thi TOEIC thực tế.
+                    <br /> <br />
+                    🔥 <b className="text-danger">Ưu đãi đặc biệt:</b> Giảm{" "}
+                    <b>33%</b> chỉ trong tháng này!
+                    <br />
+                    💰 Giá gốc: <s>3.000.000 VNĐ</s> 👉{" "}
+                    <b style={{ color: "red", fontSize: "18px" }}>Chỉ còn 1.000.000 VNĐ</b>
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+
+              <Form>
+                <Form.Group>
+                  <Form.Control
+                    type="email"
+                    placeholder="Nhập email của bạn..."
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </Form.Group>
+                <Button
+                  variant="success"
+                  className="mt-3 w-100"
+                  onClick={handleLead}
+                >
+                  📩 Thanh toán
+                </Button>
+              </Form>
+            </>
+          </Modal.Body>
+        </Modal>
+       
+
       </Container>
 
       {/* Why Us */}

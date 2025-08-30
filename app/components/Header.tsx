@@ -6,7 +6,7 @@ export default function Header() {
     <Navbar expand="lg" bg="white" variant="light" className="shadow-sm sticky-top">
       <Container>
         <Navbar.Brand href="#" className="fw-bold fs-4 text-primary">
-          YourLogo
+          QuizUp
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="main-navbar" />
         <Navbar.Collapse id="main-navbar">

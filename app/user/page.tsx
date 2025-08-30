@@ -1,6 +1,6 @@
 
 "use client";
-import { Container, Button, Navbar, Nav, Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
@@ -17,13 +17,10 @@ export default function HomePage() {
     ];
 
     useEffect(() => {
-        // Sticky header
         const handleScroll = () => {
             setScrolled(window.scrollY > 50);
         };
         window.addEventListener("scroll", handleScroll);
-
-        // Auto slide testimonials
         const interval = setInterval(() => {
             setCurrentIndex((prev) => (prev + 1) % slides.length);
         }, 5000);
@@ -46,14 +43,14 @@ export default function HomePage() {
                             <Link href="/user/home" className="btn btn-primary m-2">
                                 LÀM BÀI TEST MIỄN PHÍ
                             </Link>
-                            <Link href="#features" className="btn btn-secondary m-2">
+                            <Link href="/user/learning" className="btn btn-secondary m-2">
                                 Khám phá lộ trình học
                             </Link>
                         </div>
                         <p className="hero-trust mt-3">Đã có <strong>hơn 10.000+</strong> học viên bắt đầu từ đây</p>
                     </Container>
                 </section>
-                {/* ===== Solution Section ===== */}
+
                 <section id="solution" className="py-5 bg-white">
                     <Container>
                         <h2 className="mb-5 text-center fw-bold" >
@@ -85,8 +82,8 @@ export default function HomePage() {
                             <div
                                 className="d-flex"
                                 style={{
-                                    transform: `translateX(-${currentIndex * 100}%)`,
-                                    transition: "all 0.6s ease-in-out",
+                                    transform: `translateX(0%)`,
+                                    transition: "none",
                                 }}
                             >
                                 {slides.map((s, i) => (
@@ -112,7 +109,7 @@ export default function HomePage() {
                     </Container>
                 </section>
 
-             
+
 
             </main>
         </>

@@ -63,7 +63,7 @@ export default function HomePage() {
                         <Link href="/user/quiz" className="btn btn-primary m-2">
                             🚀 Test nhanh IELTS 15 phút
                         </Link>
-                        <Link href="#features" className="btn btn-secondary m-2">
+                        <Link href="/user/quiz" className="btn btn-secondary m-2">
                             🎯 Test nhanh TOEIC 15 phút
                         </Link>
                     </div>
@@ -132,15 +132,6 @@ export default function HomePage() {
                     </Row>
                 </Container>
             </section>
-
-            {/* CTA */}
-            <section id="final-cta" className="py-5 bg-dark text-white text-center">
-                <Container>
-                    <h2 className="mb-4">Đừng Đoán Mò Nữa! Kiểm Tra Trình Độ Ngay Bây Giờ</h2>
-                    <Button variant="danger" size="lg" onClick={() => startQuiz("ielts")}>🚀 Bắt Đầu Test & Nhận Lộ Trình Học Miễn Phí</Button>
-                </Container>
-            </section>
-            {/* QUIZ MODAL */}
             {showQuiz && (
                 <div className="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 d-flex justify-content-center align-items-center">
                     <Card className="p-4 shadow-lg" style={{ maxWidth: "600px", width: "100%" }}>

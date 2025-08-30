@@ -1,11 +1,11 @@
 "use client";
-import { Container, Row, Col, Nav, Button } from "react-bootstrap";
+import { Container, Row, Col, Nav } from "react-bootstrap";
 import Link from "next/link";
 
 export default function Footer() {
   return (
     <>
-      {/* ===== CTA ===== */}
+    
       <section
         className="text-center text-white py-5"
         style={{ background: "linear-gradient(135deg, #353739, #615771)" }}
@@ -15,11 +15,26 @@ export default function Footer() {
           <p className="mb-4" style={{ opacity: 0.9, fontSize: "1.15rem" }}>
             Bắt đầu hành trình chinh phục mục tiêu của bạn với bài test trình độ hoàn toàn miễn phí.
           </p>
-          <Button variant="light" size="lg">Làm Bài Test Ngay</Button>
+
+          <Link href="/user/quiz" passHref >
+            <button
+              as="a"
+              size="lg"
+              className="fw-bold text-uppercase shadow-lg"
+              style={{
+                background: "linear-gradient(135deg, #ff6a00, #ee0979)",
+                border: "none",
+                borderRadius: "30px",
+                padding: "12px 28px",
+                letterSpacing: "1px",
+              }}
+            >
+              🚀 Làm Bài TEST Ngay!!!
+            </button>
+          </Link>
+
         </Container>
       </section>
-
-      {/* ===== FOOTER ===== */}
       <footer className="bg-dark text-light pt-5">
         <Container>
           <Row className="mb-4">
@@ -70,6 +85,76 @@ export default function Footer() {
           </Row>
         </Container>
       </footer>
+      <a
+        href="tel:0123456789"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="float-icon phone"
+      >
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/724/724664.png"
+          alt="Phone"
+        />
+      </a>
+
+      <a
+        href="https://zalo.me/0123456789"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="float-icon zalo"
+      >
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/906/906382.png"
+          alt="Zalo"
+        />
+      </a>
+
+      <style jsx>{`
+  .float-icon {
+    position: fixed;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    animation: pulse 1.5s infinite;
+  }
+  .float-icon img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+  }
+
+  /* Phone nằm dưới */
+  .float-icon.phone {
+    bottom: 20px;
+  }
+
+  /* Zalo nằm trên */
+  .float-icon.zalo {
+    bottom: 90px; /* cách icon dưới 70px (60 + margin 10) */
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(0, 174, 239, 0.6);
+    }
+    70% {
+      transform: scale(1.1);
+      box-shadow: 0 0 0 20px rgba(0, 174, 239, 0);
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(0, 174, 239, 0);
+    }
+  }
+`}</style>
     </>
   );
 }

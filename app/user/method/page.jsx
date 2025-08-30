@@ -8,36 +8,36 @@ export default function MethodPage() {
       title: "Kiểm Tra Chẩn Đoán",
       desc:
         'Không chỉ là bài test, đây là "tấm phim X-quang" kiến thức của bạn. Bằng công nghệ AI, hệ thống sẽ phân tích và chỉ ra chính xác từng điểm yếu nhỏ nhất, từ chủ điểm ngữ pháp bạn hay sai đến dạng từ vựng bạn còn thiếu.',
-      img: "https://source.unsplash.com/random/500x350/?analysis,chart",
+      img: "/images/Mo-hinh-3T-trong-xay-dung-thuong-hieu-ca-nhan-1.jpg",
     },
     {
       tag: "T2: TARGET",
       title: "Học Tập Nhắm Mục Tiêu",
       desc:
         "Ngừng lãng phí thời gian! Dựa trên kết quả chẩn đoán, QuizUp tự động xây dựng một lộ trình học cá nhân hóa. Bạn sẽ chỉ học những gì bạn cần, với các bài giảng video, bài tập và flashcard được thiết kế riêng để lấp đầy lỗ hổng kiến thức của bạn.",
-      img: "https://source.unsplash.com/random/500x350/?target,focus",
+      img: "/images/colorful-creative-mind-map-brainstorm_xlarge.png",
     },
     {
       tag: "T3: TRACK",
       title: "Theo Dõi Tiến Độ",
       desc:
         "Thấy rõ sự tiến bộ mỗi ngày chính là động lực lớn nhất. Bảng điều khiển cá nhân sẽ trực quan hóa quá trình học của bạn bằng các biểu đồ, giúp bạn biết mình đã mạnh lên ở đâu và cần cố gắng thêm ở phần nào.",
-      img: "https://source.unsplash.com/random/500x350/?dashboard,progress",
+      img: "/images/tre-em-nghien-game-88-143321.jpg",
     },
   ];
 
   return (
     <main>
-      {/* HERO */}
       <section className="method-hero py-5 text-center  text-white" style={{ background: "linear-gradient(135deg, #353739ff, #615771ff)" }}>
         <Container>
           <h1 className="mb-3">Học Thông Minh Hơn, Không Phải Chăm Chỉ Hơn</h1>
           <p className="lead mb-4">
             Khám phá Phương pháp 3T - Lộ trình học cá nhân hóa độc quyền giúp bạn bứt phá điểm số bằng cách học đúng trọng tâm, loại bỏ lãng phí thời gian.
           </p>
-          <Button href="#" variant="light" size="lg" className="me-2">
+          <Button href="/user/home" variant="light" size="lg" className="me-2">
             Bắt đầu miễn phí
           </Button>
+          
           <Button href="#comparison" variant="outline-light" size="lg">
             Tìm hiểu thêm
           </Button>
@@ -78,8 +78,6 @@ export default function MethodPage() {
           </Row>
         </Container>
       </section>
-
-      {/* METHOD 3T */}
       <section id="method-3t" className="py-5">
         <Container>
           <h2 className="text-center mb-5">Phương Pháp 3T Hoạt Động Như Thế Nào?</h2>
